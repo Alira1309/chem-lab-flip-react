@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import FlashCard from './FlashCard';
 import Navigation from './Navigation';
@@ -139,6 +140,7 @@ const FlashCardDeck: React.FC = () => {
         <FlashCard 
           card={cards[currentIndex]} 
           isShowingAllAnswers={showingAllAnswers}
+          language={language}
         />
       </div>
 
