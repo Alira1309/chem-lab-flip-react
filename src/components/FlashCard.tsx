@@ -20,10 +20,10 @@ const FlashCard: React.FC<FlashCardProps> = ({ card, isShowingAllAnswers }) => {
 
   return (
     <div 
-      className={`flip-card w-full h-80 sm:h-96 transform transition-all duration-500 hover:scale-[1.02] ${isFlipped ? 'flipped' : ''}`}
+      className="flip-card w-full h-80 sm:h-96 transform transition-all duration-500 hover:scale-[1.02]"
     >
-      <div className="flip-card-inner w-full h-full transform-gpu perspective-1000">
-        <div className="flip-card-front p-6 rounded-xl shadow-md bg-white/90 backdrop-blur-sm flex flex-col justify-between relative group hover:shadow-xl transition-all duration-300">
+      <div className={`flip-card-inner w-full h-full transform-gpu transition-transform duration-700 ease-in-out ${isFlipped ? 'rotate-y-180' : ''}`}>
+        <div className="flip-card-front absolute w-full h-full p-6 rounded-xl shadow-md bg-white/90 backdrop-blur-sm flex flex-col justify-between relative group hover:shadow-xl transition-all duration-300 backface-hidden">
           <button 
             onClick={(e) => {
               e.stopPropagation();
@@ -53,7 +53,7 @@ const FlashCard: React.FC<FlashCardProps> = ({ card, isShowingAllAnswers }) => {
           </div>
         </div>
         <div 
-          className="flip-card-back p-6 rounded-xl shadow-md bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 backdrop-blur-sm flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300"
+          className="flip-card-back absolute w-full h-full p-6 rounded-xl shadow-md bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 backdrop-blur-sm flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 backface-hidden rotate-y-180"
           onClick={handleFlip}
         >
           <div className="text-sm text-primary/80 font-medium">
