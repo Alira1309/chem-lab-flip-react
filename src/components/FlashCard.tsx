@@ -20,16 +20,16 @@ const FlashCard: React.FC<FlashCardProps> = ({ card, isShowingAllAnswers }) => {
 
   return (
     <div 
-      className={`flip-card w-full h-80 sm:h-96 ${isFlipped ? 'flipped' : ''}`}
+      className={`flip-card w-full h-80 sm:h-96 transform transition-all duration-500 hover:scale-[1.02] ${isFlipped ? 'flipped' : ''}`}
     >
-      <div className="flip-card-inner w-full h-full">
-        <div className="flip-card-front p-6 rounded-xl shadow-md bg-white flex flex-col justify-between relative group hover:shadow-lg transition-shadow">
+      <div className="flip-card-inner w-full h-full transform-gpu perspective-1000">
+        <div className="flip-card-front p-6 rounded-xl shadow-md bg-white/90 backdrop-blur-sm flex flex-col justify-between relative group hover:shadow-xl transition-all duration-300">
           <button 
             onClick={(e) => {
               e.stopPropagation();
               handleFlip();
             }}
-            className="absolute top-4 left-4 text-xs text-primary/80 hover:text-primary font-medium transition-colors cursor-pointer"
+            className="absolute top-4 left-4 text-xs text-primary/80 hover:text-primary font-medium transition-colors cursor-pointer hover:scale-110 transition-transform"
           >
             see answer
           </button>
@@ -41,7 +41,7 @@ const FlashCard: React.FC<FlashCardProps> = ({ card, isShowingAllAnswers }) => {
             {card.category}
           </div>
           <div 
-            className="flex-grow flex items-center justify-center cursor-pointer"
+            className="flex-grow flex items-center justify-center cursor-pointer group-hover:transform group-hover:scale-105 transition-transform duration-300"
             onClick={handleFlip}
           >
             <h3 className="text-xl sm:text-2xl text-center font-medium">
@@ -53,7 +53,7 @@ const FlashCard: React.FC<FlashCardProps> = ({ card, isShowingAllAnswers }) => {
           </div>
         </div>
         <div 
-          className="flip-card-back p-6 rounded-xl shadow-md bg-gradient-to-br from-primary/10 to-secondary/10 flex flex-col justify-between cursor-pointer"
+          className="flip-card-back p-6 rounded-xl shadow-md bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 backdrop-blur-sm flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300"
           onClick={handleFlip}
         >
           <div className="text-sm text-primary/80 font-medium">
