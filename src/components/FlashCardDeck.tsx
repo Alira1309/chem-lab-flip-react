@@ -16,7 +16,6 @@ const FlashCardDeck: React.FC = () => {
   const { toast } = useToast();
   
   useEffect(() => {
-    // Mark current card as seen
     if (!seenCards.has(cards[currentIndex].id)) {
       const newSet = new Set(seenCards);
       newSet.add(cards[currentIndex].id);
@@ -81,22 +80,31 @@ const FlashCardDeck: React.FC = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <div className="relative max-w-5xl mx-auto px-4 py-8">
+      <div className="bubbles">
+        {[...Array(10)].map((_, i) => (
+          <div key={i} className={`bubble bubble-${i + 1}`} />
+        ))}
+      </div>
+      
       <div className="flex justify-between items-center mb-8">
         <button 
           onClick={toggleAllAnswers}
-          className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+          className="flex items-center gap-2 bg-primary/90 text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors shadow-lg hover:shadow-xl"
         >
           <Lightbulb size={18} />
           <span>See answers</span>
         </button>
-        <h1 className="text-3xl font-bold text-center">Chemistry Lab</h1>
-        <div className="w-24"></div> {/* Spacer for alignment */}
+        <h1 className="text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+          Chemistry Lab
+        </h1>
+        <div className="w-24"></div>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-8 relative">
         <FlashCard 
           card={cards[currentIndex]} 
+          isShowingAllAnswers={showingAllAnswers}
         />
       </div>
 
