@@ -20,10 +20,11 @@ const FlashCard: React.FC<FlashCardProps> = ({ card, isShowingAllAnswers }) => {
 
   return (
     <div 
-      className="flip-card w-full h-80 sm:h-96 transform transition-all duration-500 hover:scale-[1.02]"
+      className="flip-card w-full h-80 sm:h-96 cursor-pointer transform transition-all duration-500 hover:scale-[1.02]"
+      onClick={handleFlip}
     >
-      <div className={`flip-card-inner w-full h-full transform-gpu transition-transform duration-700 ease-in-out ${isFlipped ? 'rotate-y-180' : ''}`}>
-        <div className="flip-card-front absolute w-full h-full p-6 rounded-xl shadow-md bg-white/90 backdrop-blur-sm flex flex-col justify-between relative group hover:shadow-xl transition-all duration-300 backface-hidden">
+      <div className={`flip-card-inner w-full h-full relative ${isFlipped ? 'is-flipped' : ''}`}>
+        <div className="flip-card-front absolute w-full h-full p-6 rounded-xl shadow-md bg-white/90 backdrop-blur-sm flex flex-col justify-between group hover:shadow-xl transition-all duration-300">
           <button 
             onClick={(e) => {
               e.stopPropagation();
@@ -42,7 +43,6 @@ const FlashCard: React.FC<FlashCardProps> = ({ card, isShowingAllAnswers }) => {
           </div>
           <div 
             className="flex-grow flex items-center justify-center cursor-pointer group-hover:transform group-hover:scale-105 transition-transform duration-300"
-            onClick={handleFlip}
           >
             <h3 className="text-xl sm:text-2xl text-center font-medium">
               {card.question}
@@ -53,8 +53,7 @@ const FlashCard: React.FC<FlashCardProps> = ({ card, isShowingAllAnswers }) => {
           </div>
         </div>
         <div 
-          className="flip-card-back absolute w-full h-full p-6 rounded-xl shadow-md bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 backdrop-blur-sm flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300 backface-hidden rotate-y-180"
-          onClick={handleFlip}
+          className="flip-card-back absolute w-full h-full p-6 rounded-xl shadow-md bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 backdrop-blur-sm flex flex-col justify-between cursor-pointer hover:shadow-xl transition-all duration-300"
         >
           <div className="text-sm text-primary/80 font-medium">
             {card.category}
